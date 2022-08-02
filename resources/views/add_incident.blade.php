@@ -15,7 +15,7 @@
         </div>
     @endif
 
-    <form method="post" action="/incident/add/check">
+    <form method="post" enctype="multipart/form-data" action="/incident/add/check">
         @csrf
         <input type="text" name="type" id="type" placeholder="Enter a type of incident" class="form-control"><br>
         <input type="text" name="place" id="place" placeholder="Enter place incident" class="form-control"><br>
@@ -24,6 +24,7 @@
         <input type="date" name="date" id="date" placeholder="Enter a date of incident" class="form-control"><br>
         <textarea type="text" name="desc" id="desc" placeholder="Enter a Description of incident" class="form-control"></textarea><br>
         <textarea type="text" name="shortDesc" id="shortDesc" placeholder="Enter a Short Description of incident" class="form-control"></textarea><br>
+        <input type="file" name="image" id="image">
         <button type="submit" class="btn btn-success">Send</button>
     </form>
 @endsection
