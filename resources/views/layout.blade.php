@@ -15,6 +15,40 @@
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
             <li class="nav-item"><a href="/incidents" class="nav-link">All Incidents</a></li>
+            @if(Auth::user() != null)
+                @if(Auth::user()->roles[0]->name == 'admin' || Auth::user()->roles[0]->name == 'redactor')
+                    <li class="nav-item"><a href="/incident/add" class="nav-link">Add Incidents</a></li>
+                @endif
+                @if(Auth::user()->roles[0]->name == "admin")
+                        <li class="nav-item"><a href="/moderator_list" class="nav-link">Moderator List</a></li>
+                    @endif
+            @endif
+            <!-- Authentication Links -->
+            @guest
+                @if (Route::has('login'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </li>
+                @endif
+
+                @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                @endif
+            @else
+                <li class="nav-item">
+                    <a class="text-decoration-none" style="margin: 0;padding: 0" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </li>
+            @endguest
         </ul>
     </header>
 </div>
