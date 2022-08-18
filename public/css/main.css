@@ -1,0 +1,15 @@
+a{
+    text-decoration: none;
+}
+
+svg path{
+    fill: #8c8484;
+    stroke: #363636;
+    stroke-width: 1;
+}
+
+svg path:hover{
+    fill: #00ff84;
+    transition: 0.4s;
+    cursor: pointer;
+}

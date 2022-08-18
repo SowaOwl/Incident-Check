@@ -18,7 +18,21 @@ use App\Http\Controllers\IncidentController;
 Route::get('/', [MainController::class, 'main'])->name('main');
 
 Route::get('/incidents', [IncidentController::class, 'incidents'])->name('incidents');
-Route::get('/incident/add', [IncidentController::class, 'add_incident']);
-Route::post('/incident/add/check', [IncidentController::class, 'incident_check']);
+
+Route::get('/incident', [IncidentController::class, 'incident']);
 
 Route::get('/test', [MainController::class, 'test']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware'=>['role:admin']],function (){
+    Route::get('/incident/add', [IncidentController::class, 'add_incident']);
+    Route::post('/incident/add/check', [IncidentController::class, 'incident_check']);
+});
+
+Route::group(['middleware'=>['role:redactor']],function (){
+    Route::get('/incident/add', [IncidentController::class, 'add_incident']);
+    Route::post('/incident/add/check', [IncidentController::class, 'incident_check']);
+});
