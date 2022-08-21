@@ -1,7 +1,20 @@
+.myNavBar li a{
+    color:white;
+    font-family: 'Blinker', sans-serif;
+    font-size: 20px;
+}
+.myNavBar li a:hover{
+    color:#089c54;
+}
 a{
     text-decoration: none;
 }
-
+.requestWelcome{
+    padding-top: 5%;
+}
+.requestWelcome h1,h3{
+    font-family: 'Dosis', sans-serif;
+}
 svg path{
     fill: #8c8484;
     stroke: #363636;

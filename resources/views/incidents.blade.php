@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-    Incident
+    Incidents
 @endsection
 
 @section('main_content')
